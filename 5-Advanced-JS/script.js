@@ -229,54 +229,64 @@ johnFriendly('night');
 */
 
 // coding challenge: console game
+
+
 (
   function() {
-    var Question = function(question, options, rightAnswer) {
-        this.question = question;
-        this.options = options;
-        this.rightAnswer = rightAnswer;
-    };
+      var gamePlaying = true;
+      if (gamePlaying) {
+          var Question = function(question, options, rightAnswer) {
+              this.question = question;
+              this.options = options;
+              this.rightAnswer = rightAnswer;
+          };
 
-    Question.prototype.quiz = function() {
-        console.log(this.question);
-        for (var i = 0; i < this.options.length; i++) {
-            console.log(i + ': ' + this.options[i]);
-        }
-        var guess = prompt('enter number of correct guess');
-        if (parseInt(guess) === this.rightAnswer) {
-            console.log('thazza right');
-        } else {
-            console.log('na-aa');
-        }
-    }
+          Question.prototype.quiz = function() {
+              console.log(this.question);
+              for (var i = 0; i < this.options.length; i++) {
+                  console.log(i + ': ' + this.options[i]);
+              }
+              var guess = prompt('enter number of correct guess');
+              if (guess === 'exit') {
+                  gamePlaying === false;
+              } else if (parseInt(guess) === this.rightAnswer) {
+                  console.log('thazza right');
+                  displayQuestion();
+              } else {
+                  console.log('na-aa');
+                  displayQuestion();
+              }
 
-    var question1 = new Question('who the tallest? ', ['dan', 'ceski', 'toni'], 2);
-    var question2 = new Question('who the handsomest? ', ['dan', 'conor', 'fie'], 0);
-    var question3 = new Question('who the frenchiest? ', ['lizzie', 'frenchie', 'chilli'], 1);
+          }
+
+          var question1 = new Question('who the tallest? ', ['dan', 'ceski', 'toni'], 2);
+          var question2 = new Question('who the handsomest? ', ['dan', 'conor', 'fie'], 0);
+          var question3 = new Question('who the frenchiest? ', ['lizzie', 'frenchie', 'chilli'], 1);
 
 
 
-    function displayQuestion() {
-        var questions = [question1, question2, question3];
-        var randomise = Math.floor(Math.random() * questions.length);
+          function displayQuestion() {
+              var questions = [question1, question2, question3];
+              var randomise = Math.floor(Math.random() * questions.length);
 
-        switch(randomise) {
-            case 0:
-                question1.quiz();
-                break;
-            case 1:
-                question2.quiz();
-                break;
-            case 2:
-                question3.quiz();
-        }
-    }
+              switch(randomise) {
+                  case 0:
+                      question1.quiz();
+                      break;
+                  case 1:
+                      question2.quiz();
+                      break;
+                  case 2:
+                      question3.quiz();
+              }
+          }
 
-    displayQuestion();
+          displayQuestion();
 
+      }
   }
 )();
-
+//just added display question on line 250ish
 
 
 
