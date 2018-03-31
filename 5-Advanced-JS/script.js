@@ -234,6 +234,7 @@ johnFriendly('night');
 (
   function() {
       var gamePlaying = true;
+      var score = 0;
       if (gamePlaying) {
           var Question = function(question, options, rightAnswer) {
               this.question = question;
@@ -251,9 +252,11 @@ johnFriendly('night');
                   gamePlaying === false;
               } else if (parseInt(guess) === this.rightAnswer) {
                   console.log('thazza right');
+                  score++;
+                  console.log('score: ' + score);
                   displayQuestion();
               } else {
-                  console.log('na-aa');
+                  console.log('na-aa, score is still: ' + score);
                   displayQuestion();
               }
 
